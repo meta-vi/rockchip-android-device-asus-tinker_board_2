@@ -18,5 +18,7 @@
 
     <!-- Disable the lockscreen -->
     <bool name="def_lockscreen_disabled">true</bool>
+    <!-- Set auto-rotate off -->
+    <bool name="def_accelerometer_rotation">false</bool>
 
 </resources>
