@@ -13,6 +13,10 @@
 # limitations under the License.
 #
 
+ifneq ($(TARGET_BUILD_VARIANT),user)
+    BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
+endif
+
 PRODUCT_PACKAGES += \
     memtrack.$(TARGET_BOARD_PLATFORM) \
     android.hardware.memtrack@1.0-service \
