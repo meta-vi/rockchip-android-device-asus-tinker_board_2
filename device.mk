@@ -139,6 +139,8 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/dptx.bin:root/lib/firmware/rockchip/dptx.bin
 
+DEVICE_PACKAGE_OVERLAYS += device/asus/tinker_board_2/overlay
+
 #
 #add Rockchip properties here
 #
