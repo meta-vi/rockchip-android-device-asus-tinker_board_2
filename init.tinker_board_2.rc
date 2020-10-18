@@ -8,3 +8,6 @@ on init
 
 on boot
 
+# backlight
+    chown system system /sys/class/backlight/panel_backlight-0/brightness
+    chown system system /sys/class/backlight/panel_backlight-1/brightness
