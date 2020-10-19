@@ -22,5 +22,5 @@
     <bool name="def_accelerometer_rotation">false</bool>
     <!-- Set screen timeout to never -->
     <integer name="def_screen_off_timeout">2147483647</integer>
-
+    <integer name="def_screen_brightness">200</integer>
 </resources>
