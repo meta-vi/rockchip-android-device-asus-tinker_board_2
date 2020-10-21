@@ -184,7 +184,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
                 persist.enable_task_snapshots=false \
                 vendor.hwc.device.primary=HDMI-A \
                 vendor.hwc.device.extend=DP \
-                persist.hdmi.ui.state=2
+                persist.vendor.sys.hdmiui=2
 
 PRODUCT_PACKAGES += \
     ASUSToolkit
