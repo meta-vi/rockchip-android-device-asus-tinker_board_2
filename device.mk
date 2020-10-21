@@ -181,7 +181,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
                 ro.factory.tool=0 \
                 ro.kernel.android.checkjni=0 \
                 ro.build.shutdown_timeout=6 \
-                persist.enable_task_snapshots=false
+                persist.enable_task_snapshots=false \
+                vendor.hwc.device.primary=HDMI-A \
+                vendor.hwc.device.extend=DP \
+                persist.hdmi.ui.state=2
 
 PRODUCT_PACKAGES += \
     ASUSToolkit
