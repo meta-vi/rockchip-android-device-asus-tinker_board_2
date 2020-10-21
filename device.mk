@@ -184,7 +184,19 @@ PRODUCT_PROPERTY_OVERRIDES += \
                 persist.enable_task_snapshots=false \
                 vendor.hwc.device.primary=HDMI-A \
                 vendor.hwc.device.extend=DP \
-                persist.vendor.sys.hdmiui=2
+                persist.vendor.sys.hdmiui=2 \
+                ro.carrier=wifi-only
 
 PRODUCT_PACKAGES += \
     ASUSToolkit
+
+BOARD_SEPOLICY_DIRS += \
+    device/rockchip/common/sepolicy/vendor/AsusDebugger
+
+# AsusDebugger related packages
+PRODUCT_PACKAGES += \
+    asus-debugger-d \
+    klogger \
+    tcpdump2 \
+    AsusDebugger \
+    debugger_WifiOnly.conf
