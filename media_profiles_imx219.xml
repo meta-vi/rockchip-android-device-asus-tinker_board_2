@@ -95,7 +95,7 @@
                    bitRate="128000"
                    width="176"
                    height="144"
-                   frameRate="15" />
+                   frameRate="21" />
 
             <Audio codec="aac"
                    bitRate="61000"
@@ -109,7 +109,7 @@
                    bitRate="256000"
                    width="320"
                    height="240"
-                   frameRate="15" />
+                   frameRate="21" />
             <Audio codec="amrnb"
                    bitRate="12200"
                    sampleRate="8000"
@@ -136,7 +136,7 @@
                 bitRate="3000000"
                    width="640"
                    height="480"
-                   frameRate="15" />
+                   frameRate="21" />
 
             <Audio codec="aac"
                    bitRate="61000"
@@ -202,7 +202,7 @@
                    bitRate="6000000"
                    width="1280"
                    height="720"
-                   frameRate="15" />
+                   frameRate="21" />
 
             <Audio codec="aac"
                    bitRate="61000"
@@ -212,13 +212,25 @@
 
         <!--  If your sensor driver don't support 1080p stream, Please turn off this element -->
 
+        <EncoderProfile quality="1080p" fileFormat="mp4" duration="30">
+            <Video codec="h264"
+                   bitRate="10000000"
+                   width="1920"
+                   height="1080"
+                   frameRate="21" />
+
+            <Audio codec="aac"
+                   bitRate="61000"
+                   sampleRate="44100"
+                   channels="1" />
+        </EncoderProfile>
 
         <EncoderProfile quality="timelapseqcif" fileFormat="mp4" duration="30">
             <Video codec="h264"
                    bitRate="192000"
                    width="176"
                    height="144"
-                   frameRate="15" />
+                   frameRate="21" />
 
             <Audio codec="aac"
                    bitRate="61000"
@@ -231,7 +243,7 @@
                    bitRate="128000"
                    width="320"
                    height="240"
-                   frameRate="15" />
+                   frameRate="21" />
             <Audio codec="amrnb"
                    bitRate="12200"
                    sampleRate="8000"
@@ -259,7 +271,7 @@
                    bitRate="1200000"
                    width="640"
                    height="480"
-                   frameRate="15" />
+                   frameRate="21" />
 
         <Audio codec="aac"
                    bitRate="61000"
