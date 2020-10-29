@@ -52,7 +52,8 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/init.rk3399.usb.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.rk3399.usb.rc \
     $(LOCAL_PATH)/wake_lock_filter.xml:system/etc/wake_lock_filter.xml \
     device/rockchip/rk3399/package_performance.xml:$(TARGET_COPY_OUT_ODM)/etc/package_performance.xml \
-    device/rockchip/$(TARGET_BOARD_PLATFORM)/media_profiles_default.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_profiles_V1_0.xml
+    device/rockchip/$(TARGET_BOARD_PLATFORM)/media_profiles_default.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_profiles_V1_0.xml \
+    device/rockchip/$(TARGET_BOARD_PLATFORM)/media_profiles_imx219.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_profiles_imx219.xml
 
 #
 ## setup boot-shutdown animation configs.
