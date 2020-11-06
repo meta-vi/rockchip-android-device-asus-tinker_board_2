@@ -67,6 +67,13 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/asus/tinker_board_2/touch/fts_ts.idc:system/usr/idc/fts_ts.idc
 
+# led
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/led/led.sh:$(TARGET_COPY_OUT_VENDOR)/bin/led.sh
+
+BOARD_SEPOLICY_DIRS += \
+    device/asus/tinker_board_2/sepolicy/led
+
 #
 ## setup boot-shutdown animation configs.
 #
