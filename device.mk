@@ -58,6 +58,13 @@ PRODUCT_COPY_FILES += \
     device/asus/tinker_board_2/media_profiles_default.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_profiles_V1_0.xml \
     device/asus/tinker_board_2/media_profiles_imx219.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_profiles_imx219.xml
 
+# led
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/led/led.sh:$(TARGET_COPY_OUT_VENDOR)/bin/led.sh
+
+BOARD_SEPOLICY_DIRS += \
+    device/asus/tinker_board_2/sepolicy/led
+
 #
 ## setup boot-shutdown animation configs.
 #

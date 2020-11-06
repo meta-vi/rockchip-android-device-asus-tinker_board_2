@@ -60,7 +60,10 @@ on boot
 on init
     chown root root /sys/class/devfreq/dmc/system_status
     chmod 0666 /sys/class/devfreq/dmc/system_status
-    
+
+    # led
+    start vendor.led
+
 on post-fs-data
 
     #CABC
@@ -68,6 +71,13 @@ on post-fs-data
     chmod 0664 /sys/class/graphics/fb0/cabc
 
 service cpu_gpu_utility /vendor/bin/cpu_gpu_utility.sh
+    class main
+    user root
+    group root
+    disabled
+    oneshot
+
+service vendor.led /vendor/bin/led.sh
     class main
     user root
     group root
