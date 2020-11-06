@@ -5,7 +5,8 @@ on post-fs-data
 on early-init
 
 on init
-
+    # led
+    start vendor.led
 on boot
 
     setprop vendor.asus_debugger_running 0
@@ -20,6 +21,14 @@ service asus-dbug-d /vendor/bin/asus-debugger-d
     group root log
     group root system
     disabled
+
+# led
+service vendor.led /vendor/bin/led.sh
+    class main
+    user root
+    group root
+    disabled
+    oneshot
 
 on property:sys.asus_debugger_running=1
 	start asus-dbug-d
