@@ -63,6 +63,10 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/media_profiles_default.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_profiles_V1_0.xml \
     $(LOCAL_PATH)/media_profiles_imx219.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_profiles_imx219.xml
 
+# Touch
+PRODUCT_COPY_FILES += \
+    device/asus/tinker_board_2/touch/fts_ts.idc:system/usr/idc/fts_ts.idc
+
 #
 ## setup boot-shutdown animation configs.
 #
