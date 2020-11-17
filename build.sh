@@ -1,7 +1,7 @@
 #!/bin/bash
 usage()
 {
-   echo "USAGE: [-U] [-CK] [-A] [-p] [-o] [-u] [-v VERSION_NAME]  "
+   echo "USAGE: [-U] [-CK] [-A] [-p] [-o] [-u] [-v VERSION_NAME] [-n BUILD_NUMBER]"
     echo "No ARGS means use default build option                  "
     echo "WHERE: -U = build uboot                                 "
     echo "       -C = build kernel with Clang                     "
@@ -11,6 +11,8 @@ usage()
     echo "       -o = build OTA package                           "
     echo "       -u = build update.img                            "
     echo "       -v = build android with 'user' or 'userdebug'    "
+    echo "       -n = set build number    "
+    echo "       -r = pack the release    "
     echo "       -d = huild kernel dts name    "
     echo "       -V = build version    "
     echo "       -J = build jobs    "
@@ -27,11 +29,15 @@ BUILD_OTA=false
 BUILD_PACKING=false
 BUILD_VARIANT=`get_build_var TARGET_BUILD_VARIANT`
 KERNEL_DTS=""
-BUILD_VERSION=""
+#BUILD_VERSION=""
 BUILD_JOBS=16
+PACK_RELEASE=false
+
+BUILD_NUMBER="eng"-"$USER"-"$(date  +%Y%m%d.%H%M)"
+RELEASE_NAME=Tinker_Board_2-Android10-"$BUILD_NUMBER"
 
 # check pass argument
-while getopts "UCKApouv:d:V:J:" arg
+while getopts "UCKApouvrn:d:V:J:" arg
 do
     case $arg in
         U)
@@ -64,6 +70,14 @@ do
             ;;
         v)
             BUILD_VARIANT=$OPTARG
+            ;;
+        n)
+            BUILD_NUMBER="$OPTARG"-"$(date  +%Y%m%d)"
+            RELEASE_NAME=Tinker_Board_2-Android10-V"$BUILD_NUMBER"
+            ;;
+        r)
+            echo "will pack the release"
+            PACK_RELEASE=true
             ;;
         V)
             BUILD_VERSION=$OPTARG
@@ -102,11 +116,12 @@ PACK_TOOL_DIR=RKTools/linux/Linux_Pack_Firmware
 IMAGE_PATH=rockdev/Image-$TARGET_PRODUCT
 export PROJECT_TOP=`gettop`
 
-lunch $TARGET_PRODUCT-$BUILD_VARIANT
+#lunch $TARGET_PRODUCT-$BUILD_VARIANT
 
-DATE=$(date  +%Y%m%d.%H%M)
-STUB_PATH=Image/"$TARGET_PRODUCT"_"$BUILD_VARIANT"_"$BUILD_VERSION"_"$DATE"
-STUB_PATH="$(echo $STUB_PATH | tr '[:lower:]' '[:upper:]')"
+#DATE=$(date  +%Y%m%d.%H%M)
+#STUB_PATH=Image/"$TARGET_PRODUCT"_"$BUILD_VARIANT"_"$BUILD_VERSION"_"$DATE"
+STUB_PATH=IMAGE/"$RELEASE_NAME"
+#STUB_PATH="$(echo $STUB_PATH | tr '[:lower:]' '[:upper:]')"
 export STUB_PATH=$PROJECT_TOP/$STUB_PATH
 export STUB_PATCH_PATH=$STUB_PATH/PATCHES
 
@@ -147,13 +162,14 @@ if [ "$BUILD_ANDROID" = true ] ; then
         INTERNAL_OTA_PACKAGE_OBJ_TARGET=obj/PACKAGING/target_files_intermediates/$TARGET_PRODUCT-target_files-*.zip
         INTERNAL_OTA_PACKAGE_TARGET=$TARGET_PRODUCT-ota-*.zip
         echo "generate ota package"
+        make BUILD_NUMBER=$BUILD_NUMBER otapackage -j4
         ./mkimage.sh ota
         cp $OUT/$INTERNAL_OTA_PACKAGE_TARGET $IMAGE_PATH/
         cp $OUT/$INTERNAL_OTA_PACKAGE_OBJ_TARGET $IMAGE_PATH/
     else # regular build without OTA
         echo "start build android"
         make installclean
-        make -j$BUILD_JOBS
+        make BUILD_NUMBER=$BUILD_NUMBER -j$BUILD_JOBS
         # check the result of make
         if [ $? -eq 0 ]; then
             echo "Build android ok!"
@@ -205,7 +221,7 @@ mkdir -p $STUB_PATH
 .repo/repo/repo forall  -c "$PROJECT_TOP/device/rockchip/common/gen_patches_body.sh"
 
 #Copy stubs
-cp out/commit_id.xml $STUB_PATH/manifest_${DATE}.xml
+cp out/commit_id.xml $STUB_PATH/manifest_$RELEASE_NAME.xml
 
 mkdir -p $STUB_PATCH_PATH/kernel
 cp kernel/.config $STUB_PATCH_PATH/kernel
@@ -220,4 +236,14 @@ echo "kernel:  make ARCH=$KERNEL_ARCH $KERNEL_DEFCONFIG && make ARCH=$KERNEL_ARC
 echo "android: lunch $TARGET_PRODUCT-$BUILD_VARIANT && make installclean && make"                    >> $STUB_PATH/build_cmd_info.txt
 echo "version: $SDK_VERSION"                                                                         >> $STUB_PATH/build_cmd_info.txt
 echo "finger:  $BUILD_ID/$BUILD_NUMBER/$BUILD_VARIANT"                                               >> $STUB_PATH/build_cmd_info.txt
+fi
+
+if [ "$PACK_RELEASE" = true ] ; then
+    mkdir -p $STUB_PATH/$RELEASE_NAME
+    mv $STUB_PATH/IMAGES/update.img $STUB_PATH/$RELEASE_NAME/.
+    cd $STUB_PATH
+    zip -r $RELEASE_NAME.zip $RELEASE_NAME
+    sha256sum $RELEASE_NAME.zip > $RELEASE_NAME.zip.sha256sum
+    cd -
+    rm -rf $STUB_PATH/$RELEASE_NAME
 fi
