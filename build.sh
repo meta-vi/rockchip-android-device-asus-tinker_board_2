@@ -241,6 +241,7 @@ fi
 if [ "$PACK_RELEASE" = true ] ; then
     mkdir -p $STUB_PATH/$RELEASE_NAME
     mv $STUB_PATH/IMAGES/update.img $STUB_PATH/$RELEASE_NAME/.
+    cp -rp $PROJECT_TOP/device/asus/tinker_board_2/flash/. $STUB_PATH/$RELEASE_NAME
     cd $STUB_PATH
     zip -r $RELEASE_NAME.zip $RELEASE_NAME
     sha256sum $RELEASE_NAME.zip > $RELEASE_NAME.zip.sha256sum
