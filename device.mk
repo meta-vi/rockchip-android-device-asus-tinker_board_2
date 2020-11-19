@@ -157,6 +157,9 @@ PRODUCT_COPY_FILES += \
 
 DEVICE_PACKAGE_OVERLAYS += device/asus/tinker_board_2/overlay
 
+#add properties for spdif
+PRODUCT_PROPERTY_OVERRIDES += persist.spdif_sounds = 0
+
 #
 #add Rockchip properties here
 #
