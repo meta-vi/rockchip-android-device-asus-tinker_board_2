@@ -39,6 +39,8 @@ PRODUCT_KERNEL_DTS ?= tinker_board_2
 PRODUCT_KERNEL_CONFIG ?= tinker_board_2_defconfig android-10.config rk3399.config
 PRODUCT_UBOOT_CONFIG ?= tinker_board_2
 
+DISPLAY_BUILD_NUMBER := true
+
 SF_PRIMARY_DISPLAY_ORIENTATION := 0
 
 BOARD_AVB_ENABLE := false
