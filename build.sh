@@ -101,7 +101,7 @@ export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 export PATH=$JAVA_HOME/bin:$PATH
 export CLASSPATH=.:$JAVA_HOME/lib:$JAVA_HOME/lib/tools.jar
 # source environment and chose target product
-BUILD_NUMBER=`get_build_var BUILD_NUMBER`
+#BUILD_NUMBER=`get_build_var BUILD_NUMBER`
 BUILD_ID=`get_build_var BUILD_ID`
 # only save the version code
 SDK_VERSION=`get_build_var CURRENT_SDK_VERSION`
