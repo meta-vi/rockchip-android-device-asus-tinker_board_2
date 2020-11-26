@@ -219,3 +219,6 @@ PRODUCT_PACKAGES += \
     tcpdump2 \
     AsusDebugger \
     debugger_WifiOnly.conf
+
+PRODUCT_PACKAGES += \
+    TinkerIntegration

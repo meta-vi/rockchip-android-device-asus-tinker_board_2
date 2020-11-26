@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2020 ASUSTek Inc. All Rights Reserved. -->
+<resources>
+    <string name="app_label">ASUS Home Screen</string>
+    <string name="asus_folder_title">ASUS</string>
+</resources>
