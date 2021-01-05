@@ -227,3 +227,4 @@ PRODUCT_COPY_FILES += \
     vendor/rockchip/common/bin/$(TARGET_ARCH)/e2fsck:recovery/root/sbin/e2fsck \
     vendor/rockchip/common/bin/$(TARGET_ARCH)/resize2fs:recovery/root/sbin/resize2fs \
     vendor/rockchip/common/bin/$(TARGET_ARCH)/parted:recovery/root/sbin/parted \
+    vendor/rockchip/common/bin/$(TARGET_ARCH)/sgdisk:recovery/root/sbin/sgdisk \
