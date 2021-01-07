@@ -228,3 +228,13 @@ PRODUCT_COPY_FILES += \
     vendor/rockchip/common/bin/$(TARGET_ARCH)/resize2fs:recovery/root/sbin/resize2fs \
     vendor/rockchip/common/bin/$(TARGET_ARCH)/parted:recovery/root/sbin/parted \
     vendor/rockchip/common/bin/$(TARGET_ARCH)/sgdisk:recovery/root/sbin/sgdisk \
+
+# Copy fstab
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/fstab.rk30board.emmc:$(TARGET_COPY_OUT_VENDOR)/etc/fstab.rk30board.emmc \
+    $(LOCAL_PATH)/fstab.rk30board.emmc:$(TARGET_COPY_OUT_RAMDISK)/fstab.rk30board.emmc \
+    $(LOCAL_PATH)/fstab.rk30board.sd:$(TARGET_COPY_OUT_VENDOR)/etc/fstab.rk30board.sd \
+    $(LOCAL_PATH)/fstab.rk30board.sd:$(TARGET_COPY_OUT_RAMDISK)/fstab.rk30board.sd \
+
+PRODUCT_COPY_FILES += \
+     $(LOCAL_PATH)/init.mount_all.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.mount_all.rc
