@@ -10,6 +10,7 @@ on init
 on boot
 
     setprop vendor.asus_debugger_running 0
+    write /sys/power/wake_lock "main"
 
 # backlight
     chown system system /sys/class/backlight/panel_backlight-0/brightness
