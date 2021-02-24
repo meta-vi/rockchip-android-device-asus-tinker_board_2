@@ -64,7 +64,8 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/led/led.sh:$(TARGET_COPY_OUT_VENDOR)/bin/led.sh
 
 BOARD_SEPOLICY_DIRS += \
-    device/asus/tinker_board_2/sepolicy/led
+    device/asus/tinker_board_2/sepolicy/led \
+    device/asus/tinker_board_2/sepolicy/AsusDebugger
 
 # Touch
 PRODUCT_COPY_FILES += \
@@ -208,9 +209,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 PRODUCT_PACKAGES += \
     ASUSToolkit
-
-BOARD_SEPOLICY_DIRS += \
-    device/rockchip/common/sepolicy/vendor/AsusDebugger
 
 # AsusDebugger related packages
 PRODUCT_PACKAGES += \
