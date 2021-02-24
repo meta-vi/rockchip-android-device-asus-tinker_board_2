@@ -5,3 +5,7 @@ init_daemon_domain(led_sh)
 
 allow led_sh vendor_shell_exec:file rx_file_perms;
 allow led_sh vendor_toolbox_exec:file rx_file_perms;
+allow led_sh proc_cmdline:file { open read };
+allow led_sh sysfs:file { open write };
+allow led_sh sysfs_leds:dir search;
+allow led_sh vendor_file:file execute_no_trans;
