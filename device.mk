@@ -232,9 +232,8 @@ PRODUCT_COPY_FILES += \
 # Copy fstab
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/fstab.rk30board.emmc:$(TARGET_COPY_OUT_VENDOR)/etc/fstab.rk30board.emmc \
-    $(LOCAL_PATH)/fstab.rk30board.emmc:$(TARGET_COPY_OUT_RAMDISK)/fstab.rk30board.emmc \
+    $(LOCAL_PATH)/fstab.rk30board.ramdisk:$(TARGET_COPY_OUT_RAMDISK)/fstab.rk30board \
     $(LOCAL_PATH)/fstab.rk30board.sd:$(TARGET_COPY_OUT_VENDOR)/etc/fstab.rk30board.sd \
-    $(LOCAL_PATH)/fstab.rk30board.sd:$(TARGET_COPY_OUT_RAMDISK)/fstab.rk30board.sd \
     $(LOCAL_PATH)/recovery.fstab.emmc:recovery/root/system/etc/recovery.fstab.emmc \
     $(LOCAL_PATH)/recovery.fstab.sd:recovery/root/system/etc/recovery.fstab.sd \
 
