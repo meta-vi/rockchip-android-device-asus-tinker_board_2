@@ -46,8 +46,8 @@ ifeq ($(HOST_OS),linux)
   TARGET_USERIMAGES_USE_F2FS := true
 endif
 
-// Disable recording commit id
-BOARD_RECORD_COMMIT_ID := flase
+# Disable recording commit id
+BOARD_RECORD_COMMIT_ID := false
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/init.recovery.rk30board.rc:recovery/root/init.recovery.rk30board.rc \
