@@ -243,11 +243,10 @@ echo "finger:  $BUILD_ID/$BUILD_NUMBER/$BUILD_VARIANT"                          
 fi
 
 if [ "$PACK_RELEASE" = true ] ; then
-    mkdir -p $STUB_PATH/$RELEASE_NAME
-    mv $STUB_PATH/IMAGES/WW_Tinker_Board_2-raw.img $STUB_PATH/$RELEASE_NAME/Tinker_Board_2-Android10-V"$BUILD_NUMBER".img
+    mv $STUB_PATH/IMAGES/WW_Tinker_Board_2-raw.img $STUB_PATH/$RELEASE_NAME.img
     cd $STUB_PATH
-    zip -r $RELEASE_NAME.zip $RELEASE_NAME
+    zip -r $RELEASE_NAME.zip $RELEASE_NAME.img
     sha256sum $RELEASE_NAME.zip > $RELEASE_NAME.zip.sha256sum
+    rm $RELEASE_NAME.img
     cd -
-    rm -rf $STUB_PATH/$RELEASE_NAME
 fi
