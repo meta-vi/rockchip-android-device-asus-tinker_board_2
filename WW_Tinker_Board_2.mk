@@ -16,11 +16,11 @@
 
 # First lunching is Q, api_level is 29
 PRODUCT_SHIPPING_API_LEVEL := 29
-PRODUCT_FSTAB_TEMPLATE := $(LOCAL_PATH)/fstab.in
-PRODUCT_DTBO_TEMPLATE := $(LOCAL_PATH)/dt-overlay.in
+PRODUCT_FSTAB_TEMPLATE := $(LOCAL_PATH)/Tinker_Board_2/fstab.in
+PRODUCT_DTBO_TEMPLATE := $(LOCAL_PATH)/Tinker_Board_2/dt-overlay.in
 PRODUCT_BOOT_DEVICE := fe330000.sdhci,fe320000.dwmmc
 include device/rockchip/common/build/rockchip/DynamicPartitions.mk
-include device/asus/tinker_board_2/WW_Tinker_Board_2/BoardConfig.mk
+include device/asus/tinker_board_2/Tinker_Board_2/BoardConfig.mk
 include device/rockchip/common/BoardConfig.mk
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
 # Inherit from those products. Most specific first.
@@ -33,7 +33,7 @@ BOARD_USERDATAIMAGE_FILE_SYSTEM_TYPE := ext4
 PRODUCT_CHARACTERISTICS := tablet
 
 PRODUCT_NAME := WW_Tinker_Board_2
-PRODUCT_DEVICE := rk3399_Android10
+PRODUCT_DEVICE := Tinker_Board_2
 PRODUCT_BRAND := asus
 PRODUCT_MODEL := Tinker Board 2
 PRODUCT_MANUFACTURER := asus

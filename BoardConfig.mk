@@ -141,6 +141,9 @@ endif
 
 # ANDROID HDMI
 BOARD_SHOW_HDMI_SETTING := true
+ifeq ($(strip $(BOARD_SHOW_HDMI_SETTING)), true)
+DEVICE_MANIFEST_FILE := device/rockchip/$(TARGET_BOARD_PLATFORM)/manifest_hdmi.xml
+endif
 
 # for ethernet
 BOARD_HS_ETHERNET := true
