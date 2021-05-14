@@ -13,6 +13,10 @@
 # limitations under the License.
 #
 
+ifneq ($(TARGET_BUILD_VARIANT),user)
+BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
+endif
+
 PRODUCT_PACKAGES += \
     WallpaperPicker \
     Launcher3 \
