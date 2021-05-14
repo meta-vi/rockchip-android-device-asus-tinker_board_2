@@ -46,7 +46,7 @@ $(rebuild_parameter) : $(PRODUCT_PARAMETER_TEMPLATE) $(ROCKCHIP_PARAMETER_TOOLS)
 	$(ROCKCHIP_PARAMETER_TOOLS) --input $(PRODUCT_PARAMETER_TEMPLATE) \
 	--firmware-version $(BOARD_PLATFORM_VERSION) \
 	--machine-model $(TARGET_BOARD_PLATFORM) \
-	--manufacturer $(PRODUCT_MANUFACTURER) \
+	--manufacturer rockchip \
 	--machine $(PRODUCT_DEVICE) \
 	--partition-list $(partition_list) \
 	--output $(rebuild_parameter)
