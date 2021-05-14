@@ -20,3 +20,5 @@ ifeq ($(strip $(BOARD_USES_AB_IMAGE)), true)
     include device/rockchip/common/BoardConfig_AB.mk
     TARGET_RECOVERY_FSTAB := device/asus/tinker_board_2/Tinker_Board_2/recovery.fstab_AB
 endif
+
+PRODUCT_FSTAB_TEMPLATE := device/asus/tinker_board_2/Tinker_Board_2/fstab.in
