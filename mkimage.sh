@@ -135,6 +135,15 @@ else
 	echo "$UBOOT_PATH/uboot.img not fount! Please make it from $UBOOT_PATH first!"
 fi
 
+if [ -f $UBOOT_PATH/idbloader.img ]
+then
+	echo -n "create idbloader.img..."
+	cp -a $UBOOT_PATH/idbloader.img $IMAGE_PATH/idbloader.img
+	echo "done."
+else
+	echo "$UBOOT_PATH/idbloader.img not fount! Please make it from $UBOOT_PATH first!"
+fi
+
 if [ -f $UBOOT_PATH/trust_nand.img ]
 then
         echo "create trust.img..."

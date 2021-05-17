@@ -202,6 +202,10 @@ if [ "$BUILD_UPDATE_IMG" = true ] ; then
     cd -
     mv $PACK_TOOL_DIR/rockdev/update.img $IMAGE_PATH/ -f
     rm $PACK_TOOL_DIR/rockdev/Image -rf
+
+    cd device/asus/tinker_board_2
+    TARGET_PRODUCT=$TARGET_PRODUCT ./sdboot.sh
+    cd -
 fi
 
 if [ "$BUILD_PACKING" = true ] ; then
