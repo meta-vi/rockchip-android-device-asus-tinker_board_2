@@ -7,4 +7,4 @@ on early-init
 on init
 
 on boot
-
+    write /sys/power/wake_lock "main"
