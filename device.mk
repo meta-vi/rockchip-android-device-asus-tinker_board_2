@@ -27,7 +27,7 @@ PRODUCT_PACKAGES += \
     displayd \
     libion
 PRODUCT_PACKAGES += \
-    RockchipPinnerServiceArm64
+    RockchipPinnerService
 
 BOARD_SEPOLICY_DIRS += device/asus/tinker_board_2/sepolicy_vendor
 
