@@ -1,7 +1,7 @@
 /dts-v1/;
 /plugin/;
 / {
-	compatible = "rockchip,rk3399-excavator-linux", "rockchip,rk3399";
+	compatible = "rockchip,rk3399";
 
 	fragment@0 {
 		target = <&pwm0>;
@@ -24,11 +24,13 @@
 			status = "okay";
 			dsi_edp_bridge: sn65dsi86@2d {
 				status = "okay";
-				edp-width-mm = <344>;
-		                edp-height-mm = <193>;
+
+                                dsi-lanes = <4>;//u-boot
+		                data-lanes-size = <2>;//u-boot
+		                bpc=<8>;//u-boot
 		                data-lanes = <0 1>;
 		                lane-polarities = <0 0 0 0>;
-				
+
 				t1=<0>;
 		                t2=<0>;
 		                t3=<200>;
@@ -42,15 +44,27 @@
 		                t15 = <15>;
 		                t16= <15>;
 		                t17 = <15>;
-
+			};
+		};
+	};
+	fragment@3 {
+		target = <&dsi>;
+		__overlay__ {
+			status = "okay";
+			panel@0 {
+				backlight = <&backlight>;
+				width-mm = <344>;
+				height-mm = <193>;
 				bpc=<8>;
-				bus-format = <0x100a>;
+				bus-format = <0x100a>;//<MEDIA_BUS_FMT_RGB888_1X24>;
 				dsi,flags = <0x3>;
-				dsi,format = <0>;
-				dsi-lanes = <4>;
-				
+				dsi,format = <0>;//MIPI_DSI_FMT_RGB888:
+				dsi,lanes = <4>;
+
 				display-timings {
-					edp {
+					native-mode = <&timing86>;
+
+					timing86: timing86  {
 				            clock-frequency = <142000000>;
 				            hactive = <1920>;
 				            vactive = <1080>;
@@ -69,12 +83,15 @@
 			};
 		};
 	};
-	fragment@3 {
-		target = <&dsi>;
+       fragment@4 {
+		target = <&pinctrl>;
 		__overlay__ {
-			status = "okay";
-			mipi_panel: mipi-panel {
-				status = "disabled";
+			pinctrl-0 = <&gpio_init2>;
+			gpio_init_config {
+				gpio_init2: gpio_init2 {
+					rockchip,pins =
+						<2 19 0 &pcfg_pull_none>;
+				};
 			};
 		};
 	};

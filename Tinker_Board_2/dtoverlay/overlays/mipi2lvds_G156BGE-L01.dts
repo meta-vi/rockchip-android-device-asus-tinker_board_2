@@ -1,7 +1,7 @@
 /dts-v1/;
 /plugin/;
 / {
-	compatible = "rockchip,rk3399-excavator-linux", "rockchip,rk3399";
+	compatible = "rockchip,rk3399";
 
 	fragment@0 {
 		target = <&pwm0>;
@@ -28,10 +28,9 @@
 				lvds-clk-rate = <76000000>;
 				lvds-format = <2>;
 				lvds-bpp = <24>;
-				lvds-width-mm = <344>;
-				lvds-height-mm = <193>;
+                                dsi-lanes = <4>;
 				sync_delay = <33>;
-				
+
 				t1=<0>;
 				t2=<1>;
 				t3=<500>;
@@ -39,15 +38,28 @@
 				t5=<1>;
 				t6=<0>;
 				t7=<1000>;
+			};
+		};
+	};
+	fragment@3 {
+		target = <&dsi>;
+		__overlay__ {
+			status = "okay";
+			panel@0 {
+				backlight = <&backlight>;
 
+				width-mm = <344>;
+				height-mm = <193>;
 				bpc=<8>;
-				bus-format = <0x100a>;
+				bus-format = <0x100a>;//<MEDIA_BUS_FMT_RGB888_1X24>;
 				dsi,flags = <0x3>;
 				dsi,format = <0>;
-				dsi-lanes = <4>;
-				
+				dsi,lanes = <4>;
+
 				display-timings {
-					lvds {
+					native-mode = <&timing84>;
+
+					timing84: timing84  {
 						clock-frequency = <76000000>;
 						hactive = <1366>;
 						vactive = <768>;
@@ -66,14 +78,16 @@
 			};
 		};
 	};
-	fragment@3 {
-		target = <&dsi>;
+       fragment@4 {
+		target = <&pinctrl>;
 		__overlay__ {
-			status = "okay";
-			mipi_panel: mipi-panel {
-				status = "disabled";
+			pinctrl-0 = <&gpio_init2>;
+			gpio_init_config {
+				gpio_init2: gpio_init2 {
+					rockchip,pins =
+						<2 19 0 &pcfg_pull_none>;
+				};
 			};
 		};
 	};
-
 };
