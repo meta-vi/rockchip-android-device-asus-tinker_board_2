@@ -16,6 +16,12 @@ system_ext /system_ext  ext4 ro,barrier=1 wait,logical,first_stage_mount
 /dev/block/zram0                                none                swap      defaults                                              zramsize=50%
 # For sdmmc
 /devices/platform/fe320000.dwmmc/mmc_host*        auto  auto    defaults        voldmanaged=sdcard1:auto
+
+##############################################################
+# Source: ASUS product only
+##############################################################
+/dev/block/platform/fe330000.sdhci/by-name/splash       /splash             emmc      defaults     defaults
+
 #  Full disk encryption has less effect on rk3326, so default to enable this.
 #/dev/block/by-name/userdata /data f2fs noatime,nosuid,nodev,discard,reserve_root=32768,resgid=1065 latemount,wait,check,fileencryption=software,quota,formattable,reservedsize=128M,checkpoint=fs
 # for ext4
