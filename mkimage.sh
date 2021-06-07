@@ -277,4 +277,26 @@ if [ $IS_EBOOK == "true" ]; then
     fi
 fi
 
+echo -n "Build dtbo"
+rm -f $TARGET_DEVICE_DIR/dtoverlay/overlays/*.dtbo
+for file in $TARGET_DEVICE_DIR/dtoverlay/overlays/*.dts
+do
+    dts=${file##*/}
+    dtbo=${dts%.*}
+    dtc -@ -O dtb -o $TARGET_DEVICE_DIR/dtoverlay/overlays/$dtbo.dtbo $TARGET_DEVICE_DIR/dtoverlay/overlays/$dts
+done
+echo "done."
+
+echo -n "create dtoverlay.img"
+dd if=/dev/zero of=$IMAGE_PATH/dtoverlay.img count=2000 bs=8k
+mkdosfs $IMAGE_PATH/dtoverlay.img
+mkdir $IMAGE_PATH/.tmp
+sudo mount $IMAGE_PATH/dtoverlay.img $IMAGE_PATH/.tmp
+sudo cp -rf $TARGET_DEVICE_DIR/dtoverlay/* $IMAGE_PATH/.tmp
+sudo rm -f $IMAGE_PATH/.tmp/overlays/*.dts
+sudo rm -f $IMAGE_PATH/.tmp/overlays/.gitignore
+sudo umount $IMAGE_PATH/.tmp
+rm -rf $IMAGE_PATH/.tmp
+echo "done."
+
 chmod a+r -R $IMAGE_PATH/
