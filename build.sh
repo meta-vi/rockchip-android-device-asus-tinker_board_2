@@ -227,7 +227,7 @@ if [ "$BUILD_UPDATE_IMG" = true ] ; then
             cd $PACK_TOOL_DIR/rockdev && ./mkupdate_$TARGET_PRODUCT.sh
         fi
     else
-        cd $PACK_TOOL_DIR/rockdev && ./mkupdate_$TARGET_BOARD_PLATFORM.sh
+        cd $PACK_TOOL_DIR/rockdev && ./mkupdate_$TARGET_PRODUCT.sh
     fi
 
     if [ $? -eq 0 ]; then
