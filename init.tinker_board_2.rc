@@ -8,3 +8,7 @@ on init
 
 on boot
     write /sys/power/wake_lock "main"
+
+# backlight
+    chown system system /sys/class/backlight/panel_backlight-0/brightness
+    chown system system /sys/class/backlight/panel_backlight-1/brightness
