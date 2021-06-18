@@ -207,3 +207,6 @@ BOARD_SEPOLICY_DIRS += \
     device/asus/tinker_board_2/sepolicy/media \
     device/asus/tinker_board_2/sepolicy/system \
     device/asus/tinker_board_2/sepolicy/vendor
+
+PRODUCT_PACKAGES += \
+    TinkerIntegration
