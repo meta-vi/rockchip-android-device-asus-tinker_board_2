@@ -34,6 +34,10 @@ PRODUCT_PACKAGES += \
 
 BOARD_SEPOLICY_DIRS += device/asus/tinker_board_2/sepolicy_vendor
 
+#DMClient
+PRODUCT_PACKAGES += \
+    DMClient
+
 #enable this for support f2fs with data partion
 BOARD_USERDATAIMAGE_FILE_SYSTEM_TYPE := f2fs
 
