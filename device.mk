@@ -29,6 +29,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     RockchipPinnerService
 
+PRODUCT_PACKAGES += \
+    libmraa
+
 BOARD_SEPOLICY_DIRS += device/asus/tinker_board_2/sepolicy_vendor
 
 #enable this for support f2fs with data partion
@@ -205,6 +208,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/init.mount_all.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.mount_all.rc
 
 BOARD_SEPOLICY_DIRS += \
+    device/asus/tinker_board_2/sepolicy/gpio \
     device/asus/tinker_board_2/sepolicy/dtoverlay \
     device/asus/tinker_board_2/sepolicy/media \
     device/asus/tinker_board_2/sepolicy/system \

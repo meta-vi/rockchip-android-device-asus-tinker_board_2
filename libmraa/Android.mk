@@ -1,0 +1,13 @@
+LOCAL_PATH := $(call my-dir)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE := libmraa
+LOCAL_VENDOR_MODULE := true
+LOCAL_MODULE_TAGS := optional
+LOCAL_MULTILIB := both
+LOCAL_MODULE_CLASS := SHARED_LIBRARIES
+LOCAL_MODULE_SUFFIX := .so
+LOCAL_SRC_FILES_32 := lib/libmraa.so
+LOCAL_SRC_FILES_64 := lib64/libmraa.so
+include $(BUILD_PREBUILT)
+
