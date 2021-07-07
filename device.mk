@@ -163,6 +163,9 @@ PRODUCT_COPY_FILES += \
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(LOCAL_PATH)/bluetooth
 
+#add properties for spdif
+PRODUCT_PROPERTY_OVERRIDES += persist.spdif_sounds = 0
+
 #
 #add Rockchip properties here
 #
