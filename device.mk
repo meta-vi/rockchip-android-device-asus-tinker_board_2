@@ -204,7 +204,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
                 vendor.gralloc.no_afbc_for_fb_target_layer=1 \
                 vendor.gralloc.no_afbc_for_sf_client_layer=1 \
                 vendor.hwc.device.primary=HDMI-A \
-                vendor.hwc.device.extend=DP
+                vendor.hwc.device.extend=DP \
+                ro.carrier=wifi-only
 
 PRODUCT_COPY_FILES += \
     vendor/rockchip/common/bin/$(TARGET_ARCH)/e2fsck:recovery/root/sbin/e2fsck \
@@ -228,7 +229,16 @@ BOARD_SEPOLICY_DIRS += \
     device/asus/tinker_board_2/sepolicy/dtoverlay \
     device/asus/tinker_board_2/sepolicy/media \
     device/asus/tinker_board_2/sepolicy/system \
-    device/asus/tinker_board_2/sepolicy/vendor
+    device/asus/tinker_board_2/sepolicy/vendor \
+    device/asus/tinker_board_2/sepolicy/AsusDebugger
 
 PRODUCT_PACKAGES += \
     TinkerIntegration
+
+# AsusDebugger related packages
+PRODUCT_PACKAGES += \
+    asus-debugger-d \
+    klogger \
+    tcpdump2 \
+    AsusDebugger \
+    debugger_WifiOnly.conf
