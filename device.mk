@@ -208,7 +208,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
                 vendor.gralloc.no_afbc_for_sf_client_layer=1 \
                 vendor.hwc.device.primary=HDMI-A \
                 vendor.hwc.device.extend=DP \
-                ro.carrier=wifi-only
+                ro.carrier=wifi-only \
+                persist.sys.hdmi.cec_enable=true
 
 PRODUCT_COPY_FILES += \
     vendor/rockchip/common/bin/$(TARGET_ARCH)/e2fsck:recovery/root/sbin/e2fsck \
