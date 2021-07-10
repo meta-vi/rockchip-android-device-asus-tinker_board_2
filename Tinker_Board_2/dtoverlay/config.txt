@@ -23,7 +23,8 @@ conf:eth_wakeup=on
 
 ##### Tinker Power Management #####
 
-governor=interactive
+cpu_governor=interactive
+gpu_governor=simple_ondemand
 a53_minfreq=408000
 a53_maxfreq=1512000
 a72_minfreq=408000

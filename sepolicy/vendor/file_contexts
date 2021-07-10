@@ -1,2 +1,5 @@
 # for device
 /dev/block/by-name/splash                       u:object_r:splash_block_device:s0
+
+# for power manager
+/vendor/bin/cpu_gpu_utility.sh                  u:object_r:cpu_gpu_utility_exec:s0

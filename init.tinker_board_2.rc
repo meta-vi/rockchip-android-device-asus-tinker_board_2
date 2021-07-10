@@ -54,6 +54,13 @@ service asus-dbug-d /vendor/bin/asus-debugger-d
     group root system
     disabled
 
+service cpu_gpu_utility /vendor/bin/cpu_gpu_utility.sh
+    class main
+    user root
+    group root
+    disabled
+    oneshot
+
 on property:sys.asus_debugger_running=1
        start asus-dbug-d
 
@@ -76,3 +83,6 @@ on property:sys.asus_debugger_running=2
 
 on property:vendor.asus_debugger_running=2
        setprop sys.asus_debugger_running 2
+
+on property:vendor.boot_completed=1
+    start cpu_gpu_utility
