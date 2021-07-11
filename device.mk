@@ -237,7 +237,8 @@ BOARD_SEPOLICY_DIRS += \
     device/asus/tinker_board_2/sepolicy/AsusDebugger
 
 PRODUCT_PACKAGES += \
-    TinkerIntegration
+    TinkerIntegration \
+    ASUSToolkit
 
 # AsusDebugger related packages
 PRODUCT_PACKAGES += \
