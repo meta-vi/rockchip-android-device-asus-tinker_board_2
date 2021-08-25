@@ -18,6 +18,18 @@ on boot
     chown system system /sys/class/backlight/panel_backlight-0/brightness
     chown system system /sys/class/backlight/panel_backlight-1/brightness
 
+# For 40 pin gpio
+    chmod 0666 /sys/class/gpio/export
+    chmod 0666 /sys/class/gpio/unexport
+
+# For 40 pin PWM
+    chmod 0666 /sys/class/pwm/pwmchip0/export
+    chmod 0666 /sys/class/pwm/pwmchip0/unexport
+    chmod 0666 /sys/class/pwm/pwmchip1/export
+    chmod 0666 /sys/class/pwm/pwmchip1/unexport
+    chmod 0666 /sys/class/pwm/pwmchip3/export
+    chmod 0666 /sys/class/pwm/pwmchip3/unexport
+
 # asus-debugger-d
 service asus-dbug-d /vendor/bin/asus-debugger-d
     user root

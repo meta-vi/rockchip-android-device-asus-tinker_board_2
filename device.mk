@@ -68,6 +68,7 @@ PRODUCT_COPY_FILES += \
 
 BOARD_SEPOLICY_DIRS += \
     device/asus/tinker_board_2/sepolicy/led \
+    device/asus/tinker_board_2/sepolicy/gpio \
     device/asus/tinker_board_2/sepolicy/AsusDebugger \
     device/asus/tinker_board_2/sepolicy/system \
     device/asus/tinker_board_2/sepolicy/vendor \
@@ -225,6 +226,9 @@ PRODUCT_PACKAGES += \
     tcpdump2 \
     AsusDebugger \
     debugger_WifiOnly.conf
+
+PRODUCT_PACKAGES += \
+    libmraa
 
 PRODUCT_PACKAGES += \
     TinkerIntegration
