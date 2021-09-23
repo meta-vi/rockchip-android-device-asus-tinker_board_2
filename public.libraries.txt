@@ -2,3 +2,5 @@ libOpenCL.so.1.1
 libOpenCL.so.1
 libOpenCL.so
 libmraa.so
+libc++_shared.so
+libmraajava.so

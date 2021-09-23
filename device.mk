@@ -30,7 +30,9 @@ PRODUCT_PACKAGES += \
     RockchipPinnerService
 
 PRODUCT_PACKAGES += \
-    libmraa
+    libmraa \
+    libmraajava \
+    libc++_shared
 
 BOARD_SEPOLICY_DIRS += device/asus/tinker_board_2/sepolicy_vendor
 
