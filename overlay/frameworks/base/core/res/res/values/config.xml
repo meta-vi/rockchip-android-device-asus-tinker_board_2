@@ -161,4 +161,6 @@
     <bool name="config_showNavigationBar">true</bool>
     <integer name="config_screenBrightnessSettingMinimum">15</integer>
     <bool name="config_supportAutoRotation">false</bool>
+
+    <bool name="config_disableUsbPermissionDialogs">true</bool>
 </resources>
