@@ -5,26 +5,26 @@
 	compatible = "rockchip,rk3399";
 
 	fragment@0 {
-		target-path = "/spdif-sound";
-		__overlay__ {
-			status = "disabled";
-		};
-	};
-
-	fragment@1 {
-		target-path = "/hdmi-dp-sound";
-		__overlay__ {
-			status = "disabled";
-		};
-	};
-
-	fragment@2 {
 		target-path = "/";
 			__overlay__ {
 				dacpro_osc: dacpro_osc {
 				compatible = "hifiberry,dacpro-clk";
 				#clock-cells = <0>;
 			};
+		};
+	};
+
+	fragment@1 {
+		target = <&dp_sound>;
+		__overlay__ {
+			status = "disabled";
+		};
+	};
+
+	fragment@2 {
+		target = <&hdmi_sound>;
+		__overlay__ {
+			status = "disabled";
 		};
 	};
 
