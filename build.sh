@@ -35,7 +35,8 @@ BUILD_JOBS=16
 PACK_RELEASE=false
 
 BUILD_NUMBER="eng"-"$USER"-"$(date  +%Y%m%d.%H%M)"
-RELEASE_NAME=Tinker_Board_2-Android11-"$BUILD_NUMBER"
+RELEASE_NAME=${TARGET_PRODUCT#"WW_"}
+RELEASE_NAME="$RELEASE_NAME"-Android11-"$BUILD_NUMBER"
 
 # check pass argument
 while getopts "UCKABpouvrn:d:V:J:" arg
@@ -79,7 +80,8 @@ do
             ;;
         n)
             BUILD_NUMBER="$OPTARG"-"$(date  +%Y%m%d)"
-            RELEASE_NAME=Tinker_Board_2-Android11-V"$BUILD_NUMBER"
+            RELEASE_NAME=${TARGET_PRODUCT#"WW_"}
+            RELEASE_NAME="$RELEASE_NAME"-Android11-v"$BUILD_NUMBER"
             ;;
         r)
             echo "will pack the release"
@@ -270,7 +272,7 @@ echo "finger:  $BUILD_ID/$BUILD_NUMBER/$BUILD_VARIANT"                          
 fi
 
 if [ "$PACK_RELEASE" = true ] ; then
-    mv $STUB_PATH/IMAGES/WW_Tinker_Board_2-raw.img $STUB_PATH/$RELEASE_NAME.img
+    mv $STUB_PATH/IMAGES/$TARGET_PRODUCT-raw.img $STUB_PATH/$RELEASE_NAME.img
     cd $STUB_PATH
     zip -r $RELEASE_NAME.zip $RELEASE_NAME.img
     sha256sum $RELEASE_NAME.zip > $RELEASE_NAME.zip.sha256sum
