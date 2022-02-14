@@ -58,7 +58,7 @@ dd if=/dev/zero of=${GPT_IMG} bs=512 count=0 seek=${IMAGE_LENGTH} status=none
 parted -s ${GPT_IMG} mklabel gpt
 
 IMAGE_SEEK=0
-IMAGE_NOT_FOUND="dtb security backup cache metadata frp userdata splash"
+IMAGE_NOT_FOUND="dtb security backup cache metadata frp userdata"
 
 for((i=0;i<${#PARTITION_NAME_LIST[*]};i++))
 do

@@ -45,6 +45,7 @@ else
 KERNEL_DEBUG=kernel/arch/arm/boot/zImage
 fi
 
+ASUS_COMMON_FOLDER=device/asus/common
 
 FSTYPE=ext4
 echo system filesysystem is $FSTYPE
@@ -101,6 +102,12 @@ echo "done."
 echo "create resource.img..."
 if [ -f "kernel/resource.img" ]; then
     cp -a kernel/resource.img $IMAGE_PATH/resource.img
+    echo "done."
+fi
+
+echo "create splash.img..."
+if [ -f "$ASUS_COMMON_FOLDER/splash.img" ]; then
+    cp -a $ASUS_COMMON_FOLDER/splash.img $IMAGE_PATH/splash.img
     echo "done."
 fi
 
