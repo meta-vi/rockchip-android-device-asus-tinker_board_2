@@ -16,6 +16,9 @@ BOARD_USES_AB_IMAGE := false
 BOARD_ROCKCHIP_VIRTUAL_AB_ENABLE := false
 BOARD_HAS_RK_4G_MODEM := false
 
+# for 4g modem
+BOARD_HAS_4G_MODEM := true
+
 ifeq ($(strip $(BOARD_USES_AB_IMAGE)), true)
     include device/rockchip/common/BoardConfig_AB.mk
     TARGET_RECOVERY_FSTAB := device/asus/tinker_board_2/Tinker_Board_2/recovery.fstab_AB

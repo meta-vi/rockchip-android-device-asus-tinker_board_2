@@ -76,6 +76,37 @@ PRODUCT_COPY_FILES += \
 BOARD_SEPOLICY_DIRS += \
     device/asus/tinker_board_2/sepolicy/led
 
+# 4g modem
+ifeq ($(strip $(BOARD_HAS_4G_MODEM)), true)
+PRODUCT_PACKAGES += \
+    CarrierDefaultApp \
+    CarrierConfig \
+    rild \
+    libril \
+    libreference-ril \
+    usb_dongle \
+    usb_modeswitch
+
+PRODUCT_PACKAGES += \
+    android.hardware.radio@1.1-radio-service \
+    android.hardware.radio.config@1.0-service
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.boot.noril=false \
+    ro.radio.noril=false \
+    ro.telephony.default_network=26
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/4g_modem/lib/libreference-ril.so:$(TARGET_COPY_OUT_VENDOR)/lib64/hw/libreference-ril.so \
+    $(LOCAL_PATH)/4g_modem/rild.tinker_board_2.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/rild.rc \
+    $(LOCAL_PATH)/4g_modem/ppp/chat:/system/bin/chat \
+    $(LOCAL_PATH)/4g_modem/ppp/ip-down:/system/etc/ppp/ip-down \
+    $(LOCAL_PATH)/4g_modem/ppp/ip-up:/system/etc/ppp/ip-up
+
+BOARD_SEPOLICY_DIRS += \
+    device/asus/tinker_board_2/sepolicy/4g_modem
+
+endif
 #
 ## setup boot-shutdown animation configs.
 #
@@ -182,8 +213,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
                 ro.ril.ecclist=112,911 \
                 ro.opengles.version=196610 \
                 wifi.interface=wlan0 \
-                rild.libpath=/vendor/lib64/libril-rk29-dataonly.so \
-                rild.libargs=-d /dev/ttyACM0 \
                 persist.tegra.nvmmlite = 1 \
                 ro.audio.monitorOrientation=true \
                 debug.nfc.fw_download=false \
@@ -217,7 +246,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
                 vendor.gralloc.no_afbc_for_sf_client_layer=1 \
                 vendor.hwc.device.primary=HDMI-A \
                 vendor.hwc.device.extend=DP \
-                ro.carrier=wifi-only \
                 persist.sys.hdmi.cec_enable=true
 
 PRODUCT_COPY_FILES += \
