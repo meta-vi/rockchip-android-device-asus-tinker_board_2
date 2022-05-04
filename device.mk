@@ -172,6 +172,9 @@ BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(LOCAL_PATH)/bluetooth
 #add properties for spdif
 PRODUCT_PROPERTY_OVERRIDES += persist.spdif_sounds = 0
 
+#add properties for tcp adb
+PRODUCT_PROPERTY_OVERRIDES += persist.adb.tcp.port = 5555
+
 #
 #add Rockchip properties here
 #
