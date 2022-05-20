@@ -55,12 +55,12 @@ include $(BUILD_PREBUILT)
 
 # Debugger_WifiOnly.conf might be different by branches.
 include $(CLEAR_VARS)
-
-ifeq ($(TARGET_PRODUCT), $(filter $(TARGET_PRODUCT),rk3288))
-	LOCAL_MODULE := debugger.conf
-else
-	LOCAL_MODULE := debugger_WifiOnly.conf
-endif
+#ifeq ($(TARGET_PRODUCT), $(filter $(TARGET_PRODUCT),rk3288))
+#	LOCAL_MODULE := debugger.conf
+#else
+#	LOCAL_MODULE := debugger_WifiOnly.conf
+#endif
+LOCAL_MODULE := debugger.conf
 
 ifeq ($(TARGET_PRODUCT),CN_Zenbo)
 	ifeq ($(TARGET_BUILD_VARIANT),user)
