@@ -22,3 +22,5 @@ ifeq ($(strip $(BOARD_USES_AB_IMAGE)), true)
 endif
 
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/asus/tinker_board_2/bluetooth
+
+PRODUCT_FSTAB_TEMPLATE := device/asus/tinker_board_2/Tinker_Board_2/fstab.in
