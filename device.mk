@@ -44,6 +44,7 @@ ifeq ($(HOST_OS),linux)
 endif
 
 PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/init.recovery.rk30board.rc:recovery/root/init.recovery.rk30board.rc \
     vendor/rockchip/common/bin/$(TARGET_ARCH)/busybox:recovery/root/sbin/busybox
 
 PRODUCT_COPY_FILES += \
@@ -176,3 +177,20 @@ PRODUCT_PROPERTY_OVERRIDES += \
                 ro.sf.lcd_density=280 \
                 ro.build.shutdown_timeout=6 \
                 persist.enable_task_snapshots=false
+
+PRODUCT_COPY_FILES += \
+    vendor/rockchip/common/bin/$(TARGET_ARCH)/e2fsck:recovery/root/sbin/e2fsck \
+    vendor/rockchip/common/bin/$(TARGET_ARCH)/resize2fs:recovery/root/sbin/resize2fs \
+    vendor/rockchip/common/bin/$(TARGET_ARCH)/parted:recovery/root/sbin/parted \
+    vendor/rockchip/common/bin/$(TARGET_ARCH)/sgdisk:recovery/root/sbin/sgdisk \
+
+# Copy fstab
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/fstab.rk30board.emmc:$(TARGET_COPY_OUT_VENDOR)/etc/fstab.rk30board.emmc \
+    $(LOCAL_PATH)/fstab.rk30board.ramdisk:$(TARGET_COPY_OUT_RAMDISK)/fstab.rk30board \
+    $(LOCAL_PATH)/fstab.rk30board.sd:$(TARGET_COPY_OUT_VENDOR)/etc/fstab.rk30board.sd \
+    $(LOCAL_PATH)/recovery.fstab.emmc:recovery/root/system/etc/recovery.fstab.emmc \
+    $(LOCAL_PATH)/recovery.fstab.sd:recovery/root/system/etc/recovery.fstab.sd \
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/init.mount_all.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.mount_all.rc

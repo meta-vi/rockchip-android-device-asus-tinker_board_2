@@ -17,7 +17,7 @@
 # First lunching is S, api_level is 31
 PRODUCT_SHIPPING_API_LEVEL := 31
 PRODUCT_DTBO_TEMPLATE := $(LOCAL_PATH)/dt-overlay.in
-PRODUCT_BOOT_DEVICE := fe330000.sdhci
+PRODUCT_BOOT_DEVICE := fe330000.sdhci,fe320000.dwmmc
 include device/rockchip/common/build/rockchip/DynamicPartitions.mk
 include device/asus/tinker_board_2/Tinker_Board_2/BoardConfig.mk
 include device/rockchip/common/BoardConfig.mk
