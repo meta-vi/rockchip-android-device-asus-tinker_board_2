@@ -1,7 +1,7 @@
 #!/bin/bash
 usage()
 {
-   echo "USAGE: [-U] [-CK] [-A] [-p] [-o] [-u] [-v VERSION_NAME]  "
+   echo "USAGE: [-U] [-CK] [-A] [-p] [-o] [-u] [-v VERSION_NAME] [-n BUILD_NUMBER]"
     echo "No ARGS means use default build option                  "
     echo "WHERE: -U = build uboot                                 "
     echo "       -C = build kernel with Clang                     "
@@ -11,6 +11,8 @@ usage()
     echo "       -o = build OTA package                           "
     echo "       -u = build update.img                            "
     echo "       -v = build android with 'user' or 'userdebug'    "
+    echo "       -n = set build number    "
+    echo "       -r = pack the release    "
     echo "       -d = huild kernel dts name    "
     echo "       -V = build version    "
     echo "       -J = build jobs    "
@@ -28,11 +30,16 @@ BUILD_OTA=false
 BUILD_PACKING=false
 BUILD_VARIANT=`get_build_var TARGET_BUILD_VARIANT`
 KERNEL_DTS=""
-BUILD_VERSION=""
+#BUILD_VERSION=""
 BUILD_JOBS=16
 
+PACK_RELEASE=false
+
+BUILD_NUMBER="eng"-"$USER"-"$(date  +%Y%m%d.%H%M)"
+RELEASE_NAME=Tinker_Board_2-Android12-"$BUILD_NUMBER"
+
 # check pass argument
-while getopts "UCKABpouv:d:V:J:" arg
+while getopts "UCKABpouvrn:d:V:J:" arg
 do
     case $arg in
         U)
@@ -71,6 +78,14 @@ do
         v)
             BUILD_VARIANT=$OPTARG
             ;;
+        n)
+            BUILD_NUMBER="$OPTARG"-"$(date  +%Y%m%d)"
+            RELEASE_NAME=Tinker_Board_2-Android12-V"$BUILD_NUMBER"
+            ;;
+        r)
+            echo "will pack the release"
+            PACK_RELEASE=true
+            ;;
         V)
             BUILD_VERSION=$OPTARG
             ;;
@@ -95,7 +110,7 @@ export PATH=$ANDROID_BUILD_TOP/prebuilts/clang/host/linux-x86/clang-r416183b/bin
 export CLASSPATH=.:$JAVA_HOME/lib:$JAVA_HOME/lib/tools.jar
 
 # source environment and chose target product
-BUILD_NUMBER=`get_build_var BUILD_NUMBER`
+#BUILD_NUMBER=`get_build_var BUILD_NUMBER`
 BUILD_ID=`get_build_var BUILD_ID`
 # only save the version code
 SDK_VERSION=`get_build_var CURRENT_SDK_VERSION`
@@ -119,11 +134,12 @@ PACK_TOOL_DIR=RKTools/linux/Linux_Pack_Firmware
 IMAGE_PATH=rockdev/Image-$TARGET_PRODUCT
 export PROJECT_TOP=`gettop`
 
-lunch $TARGET_PRODUCT-$BUILD_VARIANT
+#lunch $TARGET_PRODUCT-$BUILD_VARIANT
 
-DATE=$(date  +%Y%m%d.%H%M)
-STUB_PATH=Image/"$TARGET_PRODUCT"_"$BUILD_VARIANT"_"$KERNEL_DTS"_"$BUILD_VERSION"_"$DATE"
-STUB_PATH="$(echo $STUB_PATH | tr '[:lower:]' '[:upper:]')"
+#DATE=$(date  +%Y%m%d.%H%M)
+#STUB_PATH=Image/"$TARGET_PRODUCT"_"$BUILD_VARIANT"_"$KERNEL_DTS"_"$BUILD_VERSION"_"$DATE"
+#STUB_PATH="$(echo $STUB_PATH | tr '[:lower:]' '[:upper:]')"
+STUB_PATH=IMAGE/"$RELEASE_NAME"
 export STUB_PATH=$PROJECT_TOP/$STUB_PATH
 export STUB_PATCH_PATH=$STUB_PATH/PATCHES
 
@@ -182,6 +198,7 @@ if [ "$BUILD_ANDROID" = true ] ; then
 	    make installclean
 	    make -j$BUILD_JOBS
 	    make dist -j$BUILD_JOBS
+            make BUILD_NUMBER=$BUILD_NUMBER otapackage -j$BUILD_JOBS
             ./mkimage.sh ota
         fi
         cp $OUT/$INTERNAL_OTA_PACKAGE_TARGET $IMAGE_PATH/
@@ -189,7 +206,7 @@ if [ "$BUILD_ANDROID" = true ] ; then
     else # regular build without OTA
         echo "start build android"
         make installclean
-        make -j$BUILD_JOBS
+        make BUILD_NUMBER=$BUILD_NUMBER -j$BUILD_JOBS
         # check the result of make
         if [ $? -eq 0 ]; then
             echo "Build android ok!"
@@ -257,12 +274,21 @@ mkdir -p $STUB_PATH
 mkdir -p $STUB_PATH/IMAGES/
 cp $IMAGE_PATH/* $STUB_PATH/IMAGES/
 
+if [ "$PACK_RELEASE" = true ] ; then
+    mv $STUB_PATH/IMAGES/WW_Tinker_Board_2-raw.img $STUB_PATH/$RELEASE_NAME.img
+    cd $STUB_PATH
+    zip -r $RELEASE_NAME.zip $RELEASE_NAME.img
+    sha256sum $RELEASE_NAME.zip > $RELEASE_NAME.zip.sha256sum
+    rm $RELEASE_NAME.img
+    cd -
+fi
+
 #Generate patches
 
 .repo/repo/repo forall  -c "$PROJECT_TOP/device/rockchip/common/gen_patches_body.sh"
 .repo/repo/repo manifest -r -o out/commit_id.xml
 #Copy stubs
-cp out/commit_id.xml $STUB_PATH/manifest_${DATE}.xml
+cp out/commit_id.xml $STUB_PATH/manifest_$RELEASE_NAME.xml
 
 mkdir -p $STUB_PATCH_PATH/kernel
 cp $LOCAL_KERNEL_PATH/.config $STUB_PATCH_PATH/kernel
