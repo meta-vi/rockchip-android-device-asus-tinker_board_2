@@ -102,6 +102,7 @@ done
 
 TARGET_PRODUCT=`get_build_var TARGET_PRODUCT`
 TARGET_BOARD_PLATFORM=`get_build_var TARGET_BOARD_PLATFORM`
+TARGET_PRODUCT_MODEL=`get_build_var PRODUCT_MODEL`
 
 #set jdk version
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
@@ -249,7 +250,11 @@ if [ "$BUILD_UPDATE_IMG" = true ] ; then
 		cd $PACK_TOOL_DIR/rockdev && ./mkupdate_$TARGET_PRODUCT.sh
 	fi
     else
-		cd $PACK_TOOL_DIR/rockdev && ./mkupdate.sh $TARGET_BOARD_PLATFORM Image
+        if [[ $TARGET_PRODUCT_MODEL = "Tinker Board 2" ]] ; then
+            cd $PACK_TOOL_DIR/rockdev && ./mkupdate_$TARGET_PRODUCT.sh
+        else
+            cd $PACK_TOOL_DIR/rockdev && ./mkupdate.sh $TARGET_BOARD_PLATFORM Image
+        fi
     fi
 
     if [ $? -eq 0 ]; then
