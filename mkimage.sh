@@ -83,6 +83,12 @@ fi
 cp -a $BOARD_DTBO_IMG $IMAGE_PATH/dtbo.img
 echo "done."
 
+echo "create splash.img..."
+if [ -f "${TARGET_DEVICE_DIR}/splash.img" ]; then
+    cp -a ${TARGET_DEVICE_DIR}/splash.img $IMAGE_PATH/splash.img
+    echo "done."
+fi
+
 copy_images $KERNEL_PATH/resource.img $IMAGE_PATH/resource.img
 copy_images_from_out boot.img
 copy_images_from_out boot-debug.img

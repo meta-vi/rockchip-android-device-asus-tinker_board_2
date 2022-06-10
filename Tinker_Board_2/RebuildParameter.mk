@@ -32,6 +32,9 @@ ifneq ($(strip $(BOARD_WITH_SPECIAL_PARTITIONS)), )
 partition_list := $(partition_list),$(BOARD_WITH_SPECIAL_PARTITIONS)
 endif
 
+# splash partition
+partition_list := $(partition_list),splash:16M
+
 ifeq ($(strip $(BOARD_SUPER_PARTITION_GROUPS)),rockchip_dynamic_partitions)
 partition_list := $(partition_list),super:$(BOARD_SUPER_PARTITION_SIZE)
 else # BOARD_USE_DYNAMIC_PARTITIONS
