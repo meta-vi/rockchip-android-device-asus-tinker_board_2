@@ -94,7 +94,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.boot.noril=false \
     ro.radio.noril=false \
-    ro.telephony.default_network=26
+    ro.telephony.default_network=26 \
+    ro.com.android.dataroaming=false
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/4g_modem/lib/libreference-ril.so:$(TARGET_COPY_OUT_VENDOR)/lib64/hw/libreference-ril.so \
