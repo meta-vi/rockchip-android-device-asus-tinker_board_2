@@ -1,0 +1,3 @@
+/dtoverlay(/.*)?                u:object_r:vfat:s0
+
+/dev/block/by-name/dtoverlay    u:object_r:userdata_block_device:s0
