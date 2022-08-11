@@ -25,6 +25,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
 # Inherit from those products. Most specific first.
 $(call inherit-product, device/asus/tinker_board_2/device.mk)
 $(call inherit-product, device/rockchip/common/device.mk)
+$(call inherit-product, device/asus/common/device.mk)
 
 PRODUCT_CHARACTERISTICS := tablet
 
