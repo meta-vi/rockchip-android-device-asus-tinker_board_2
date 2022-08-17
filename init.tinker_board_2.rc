@@ -44,8 +44,3 @@ on post-fs-data
     #CABC
     chown root system /sys/class/graphics/fb0/cabc
     chmod 0664 /sys/class/graphics/fb0/cabc
-
-on early-init
-    write /sys/devices/system/cpu/cpufreq/policy0/scaling_governor performance
-    write /sys/devices/system/cpu/cpufreq/policy4/scaling_governor performance
-    write /sys/class/devfreq/dmc/governor performance
