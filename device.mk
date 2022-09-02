@@ -196,4 +196,8 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/init.mount_all.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.mount_all.rc
 
 BOARD_SEPOLICY_DIRS += \
-    device/asus/tinker_board_2/sepolicy/dtoverlay
+    device/asus/tinker_board_2/sepolicy/dtoverlay \
+    device/asus/tinker_board_2/sepolicy/vendor
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/cpu_gpu_utility.sh:$(TARGET_COPY_OUT_VENDOR)/bin/cpu_gpu_utility.sh
