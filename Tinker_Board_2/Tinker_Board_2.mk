@@ -29,7 +29,7 @@ $(call inherit-product, device/asus/common/device.mk)
 
 PRODUCT_CHARACTERISTICS := tablet
 
-PRODUCT_NAME := WW_Tinker_Board_2
+PRODUCT_NAME := Tinker_Board_2
 PRODUCT_DEVICE := Tinker_Board_2
 PRODUCT_BRAND := asus
 PRODUCT_MODEL := Tinker Board 2
