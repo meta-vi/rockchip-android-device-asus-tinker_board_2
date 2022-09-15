@@ -132,6 +132,10 @@ $(call inherit-product, frameworks/native/build/tablet-10in-xhdpi-2048-dalvik-he
 
 $(call inherit-product-if-exists, vendor/rockchip/rk3399/device-vendor.mk)
 
+#Include thermal HAL module
+BOARD_ROCKCHIP_THERMAL := true
+$(call inherit-product, device/rockchip/common/modules/thermal.mk)
+
 PRODUCT_COPY_FILES += \
     device/asus/tinker_board_2/public.libraries.txt:vendor/etc/public.libraries.txt
 
