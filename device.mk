@@ -68,6 +68,8 @@ PRODUCT_COPY_FILES += \
 # Touch
 PRODUCT_COPY_FILES += \
     device/asus/tinker_board_2/touch/fts_ts.idc:system/usr/idc/fts_ts.idc
+PRODUCT_COPY_FILES += \
+    device/asus/tinker_board_2/touch/DIALOGUE_INC_PenMount_USB.idc:system/usr/idc/DIALOGUE_INC_PenMount_USB.idc
 
 # led
 PRODUCT_COPY_FILES += \
