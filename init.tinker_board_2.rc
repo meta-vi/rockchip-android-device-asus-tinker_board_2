@@ -31,7 +31,11 @@ on boot
     chown system system /sys/class/thermal/thermal_zone0/policy
     chown system system /sys/class/thermal/thermal_zone1/policy
     chown system system /sys/class/thermal/thermal_zone2/policy
-    
+
+    # backlight
+    chown system system /sys/class/backlight/panel_backlight-0/brightness
+    chown system system /sys/class/backlight/panel_backlight-1/brightness
+
     # update cpusets feature nodes for rk3399 tablet
     write /dev/cpuset/foreground/cpus 0-5
     write /dev/cpuset/foreground/boost/cpus 4-5
