@@ -143,6 +143,9 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/dptx.bin:root/lib/firmware/rockchip/dptx.bin
 
+#add properties for spdif
+PRODUCT_PROPERTY_OVERRIDES += persist.spdif_sounds = 0
+
 #
 #add Rockchip properties here
 #
