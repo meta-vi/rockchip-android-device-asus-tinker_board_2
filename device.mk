@@ -280,13 +280,5 @@ PRODUCT_PACKAGES += \
     TinkerIntegration \
     TinkerConfig
 
-# AsusDebugger related packages
-PRODUCT_PACKAGES += \
-    asus-debugger-d \
-    klogger \
-    tcpdump2 \
-    AsusDebugger \
-    debugger.conf
-
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/cpu_gpu_utility.sh:$(TARGET_COPY_OUT_VENDOR)/bin/cpu_gpu_utility.sh
