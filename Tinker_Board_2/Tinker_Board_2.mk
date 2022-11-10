@@ -47,3 +47,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.product.version = 1.0.0 \
     ro.product.ota.host = 192.168.1.1:8888 \
     ro.sf.lcd_density=280
+
+# Append the manifest files for Tinker Board 2 here since this will be defined
+# in device/rockchip/common/BoardConfig.mk to use the default one.
+DEVICE_MANIFEST_FILE += device/asus/tinker_board_2/manifest.xml

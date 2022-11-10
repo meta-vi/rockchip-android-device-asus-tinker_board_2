@@ -7,6 +7,9 @@ on property:sys.boot_completed=1
     chmod 0664 /sys/class/devfreq/ff9a0000.gpu/max_freq
     chown root system /sys/class/devfreq/dmc/governor
     chmod 0664 /sys/class/devfreq/dmc/governor
+    #HDMI CEC
+    chown root system /dev/cec0
+    chmod 0664 /dev/cec0
 
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 0
     write /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq 0
