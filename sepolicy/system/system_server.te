@@ -1,0 +1,4 @@
+allow system_server media_rw_data_file:file { open };
+allow system_server media_rw_data_file:dir { write };
+# allow system_server splash_block_device:blk_file { open };
+allow system_server splash_block_device:blk_file { getattr };
