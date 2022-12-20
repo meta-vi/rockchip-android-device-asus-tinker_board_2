@@ -53,8 +53,6 @@ on boot
     # reduce schedul time to improve io performance
     write /sys/kernel/debug/sched_features NO_ENERGY_AWARE
 
-    write /sys/power/wake_lock "main"
-
     # for bmp splash
     chmod 0666 /dev/block/mmcblk2p13
     chmod 0666 /dev/block/mmcblk1p13
