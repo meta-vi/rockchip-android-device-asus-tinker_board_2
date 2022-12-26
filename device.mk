@@ -70,6 +70,9 @@ PRODUCT_COPY_FILES += \
     device/asus/tinker_board_2/touch/fts_ts.idc:system/usr/idc/fts_ts.idc
 PRODUCT_COPY_FILES += \
     device/asus/tinker_board_2/touch/DIALOGUE_INC_PenMount_USB.idc:system/usr/idc/DIALOGUE_INC_PenMount_USB.idc
+PRODUCT_COPY_FILES += \
+    device/asus/tinker_board_2/touch/eGalax_Touch_Screen.idc:system/usr/idc/eGalax_Touch_Screen.idc
+
 
 # led
 PRODUCT_COPY_FILES += \
