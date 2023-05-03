@@ -57,6 +57,18 @@ on boot
     chmod 0666 /dev/block/mmcblk2p13
     chmod 0666 /dev/block/mmcblk1p13
 
+# For 40 pin gpio
+    chmod 0666 /sys/class/gpio/export
+    chmod 0666 /sys/class/gpio/unexport
+
+# For 40 pin PWM
+    chmod 0666 /sys/class/pwm/pwmchip0/export
+    chmod 0666 /sys/class/pwm/pwmchip0/unexport
+    chmod 0666 /sys/class/pwm/pwmchip1/export
+    chmod 0666 /sys/class/pwm/pwmchip1/unexport
+    chmod 0666 /sys/class/pwm/pwmchip3/export
+    chmod 0666 /sys/class/pwm/pwmchip3/unexport
+
 on init
     chown root root /sys/class/devfreq/dmc/system_status
     chmod 0666 /sys/class/devfreq/dmc/system_status

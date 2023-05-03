@@ -49,6 +49,8 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/init.tinker_board_2.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.tinker_board_2.rc \
+    $(LOCAL_PATH)/ueventd.tinker_board_2.rc:$(TARGET_COPY_OUT_VENDOR)/etc/ueventd.rc \
+    $(LOCAL_PATH)/libmraa/lib64/libc++_shared.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libc++_shared.so \
     $(LOCAL_PATH)/wake_lock_filter.xml:system/etc/wake_lock_filter.xml \
     device/asus/tinker_board_2/package_performance.xml:$(TARGET_COPY_OUT_ODM)/etc/package_performance.xml \
     device/asus/tinker_board_2/media_profiles_default.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_profiles_V1_0.xml \
