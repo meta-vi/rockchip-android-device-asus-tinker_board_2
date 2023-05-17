@@ -245,7 +245,3 @@ BOARD_SEPOLICY_DIRS += \
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/cpu_gpu_utility.sh:$(TARGET_COPY_OUT_VENDOR)/bin/cpu_gpu_utility.sh
-
-# ASUS TinkerConfig
-PRODUCT_PACKAGES += \
-    TinkerConfig
