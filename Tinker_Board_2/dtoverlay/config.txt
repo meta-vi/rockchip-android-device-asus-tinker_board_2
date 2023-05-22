@@ -3,18 +3,17 @@
 ## Uncomment these to enable the optional hardware interfaces. ##
 ## Note: uart4 and spi1 are the same pins. Set the latter one while both on. ##
 
-intf:fiq_debugger=on
-#intf:uart0=on
-#intf:uart4=on
-#intf:i2c6=on
-#intf:i2c7=on
-#intf:i2s0=on
-intf:spdif=on
-#intf:spi1=on
-#intf:spi5=on
-#intf:pwm0=on
-#intf:pwm1=on
-#intf:pwm3a=on
+#intf:uart0=off
+#intf:uart4=off
+#intf:i2c6=off
+#intf:i2c7=off
+#intf:i2s0=off
+#intf:spdif=on
+#intf:spi1=off
+#intf:spi5=off
+#intf:pwm0=off
+#intf:pwm1=off
+#intf:pwm3a=off
 #intf:test_clkout2=on
 
 ##### Driver Config #####
