@@ -150,3 +150,8 @@ BOARD_SUPPORT_MULTIAUDIO := false
 
 # For overlay partition
 BOARD_USES_DTOVERLAY_PARTITION := true
+
+BUILD_BROKEN_DUP_RULES := true
+
+# For cellular
+BOARD_SUPPORT_MODEM := true
