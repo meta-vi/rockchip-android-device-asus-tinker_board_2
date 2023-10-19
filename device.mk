@@ -239,7 +239,15 @@ BOARD_SEPOLICY_DIRS += \
     device/asus/tinker_board_2/sepolicy/vendor \
     device/asus/tinker_board_2/sepolicy/AsusDebugger \
     device/asus/tinker_board_2/sepolicy/media \
-    device/asus/tinker_board_2/sepolicy/system
+    device/asus/tinker_board_2/sepolicy/system \
+    device/asus/tinker_board_2/sepolicy/gps
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/cpu_gpu_utility.sh:$(TARGET_COPY_OUT_VENDOR)/bin/cpu_gpu_utility.sh
+
+PRODUCT_PACKAGES += \
+    android.hardware.gnss@1.0-impl android.hardware.gnss@1.0-service
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/gps/arm64-v8a/gps.default.so:vendor/lib64/hw/gps.default.so \
+    $(LOCAL_PATH)/gps/gps_cfg.inf:vendor/etc/gps_cfg.inf
