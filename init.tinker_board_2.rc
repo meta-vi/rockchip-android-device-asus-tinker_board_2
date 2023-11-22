@@ -1,10 +1,10 @@
 on property:sys.boot_completed=1
     chown root system /sys/class/devfreq/ff9a0000.gpu/governor
-    chmod 0664 /sys/class/devfreq/ff9a0000.gpu/governor
+    chmod 0666 /sys/class/devfreq/ff9a0000.gpu/governor
     chown root system /sys/class/devfreq/ff9a0000.gpu/min_freq
-    chmod 0664 /sys/class/devfreq/ff9a0000.gpu/min_freq
+    chmod 0666 /sys/class/devfreq/ff9a0000.gpu/min_freq
     chown root system /sys/class/devfreq/ff9a0000.gpu/max_freq
-    chmod 0664 /sys/class/devfreq/ff9a0000.gpu/max_freq
+    chmod 0666 /sys/class/devfreq/ff9a0000.gpu/max_freq
     chown root system /sys/class/devfreq/dmc/governor
     chmod 0664 /sys/class/devfreq/dmc/governor
     #HDMI CEC
