@@ -74,6 +74,9 @@ on boot
     chmod 0666 /sys/class/pwm/pwmchip3/export
     chmod 0666 /sys/class/pwm/pwmchip3/unexport
 
+    # For RTC0 wakealarm
+    chmod 0666 /sys/devices/platform/ff3c0000.i2c/i2c-0/0-001b/rk808-rtc/rtc/rtc0/wakealarm
+
 on init
     chown root root /sys/class/devfreq/dmc/system_status
     chmod 0666 /sys/class/devfreq/dmc/system_status

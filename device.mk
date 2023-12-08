@@ -240,7 +240,8 @@ BOARD_SEPOLICY_DIRS += \
     device/asus/tinker_board_2/sepolicy/AsusDebugger \
     device/asus/tinker_board_2/sepolicy/media \
     device/asus/tinker_board_2/sepolicy/system \
-    device/asus/tinker_board_2/sepolicy/gps
+    device/asus/tinker_board_2/sepolicy/gps \
+    device/asus/tinker_board_2/sepolicy/rtc
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/cpu_gpu_utility.sh:$(TARGET_COPY_OUT_VENDOR)/bin/cpu_gpu_utility.sh
