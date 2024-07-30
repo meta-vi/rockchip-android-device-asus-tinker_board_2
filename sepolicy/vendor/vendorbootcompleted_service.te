@@ -1,0 +1,7 @@
+# start service
+type vendorbootcompleted_service, domain;
+type vendorbootcompleted_service_exec, exec_type, vendor_file_type, file_type;
+
+init_daemon_domain(vendorbootcompleted_service)
+
+dontaudit vendorbootcompleted_service sysfs:file rw_file_perms;

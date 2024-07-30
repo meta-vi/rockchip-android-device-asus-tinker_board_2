@@ -80,8 +80,10 @@ do
             ;;
         n)
             BUILD_NUMBER="$OPTARG"-"$(date  +%Y%m%d)"
+	        BUILD_NUMBER="$OPTARG"
             RELEASE_NAME=${TARGET_PRODUCT#"WW_"}
             RELEASE_NAME="$RELEASE_NAME"-Android11-v"$BUILD_NUMBER"
+            RELEASE_NAME="$BUILD_NUMBER"
             ;;
         r)
             echo "will pack the release"

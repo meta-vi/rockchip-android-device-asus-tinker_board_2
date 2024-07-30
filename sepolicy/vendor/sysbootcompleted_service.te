@@ -1,0 +1,7 @@
+#  service_sysbootcompleted
+type sysbootcompleted_service, domain;
+type sysbootcompleted_service_exec, exec_type, vendor_file_type, file_type;
+
+init_daemon_domain(sysbootcompleted_service)
+
+dontaudit sysbootcompleted_service sysfs:file rw_file_perms;

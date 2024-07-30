@@ -3,3 +3,7 @@
 
 # for power manager
 /vendor/bin/cpu_gpu_utility.sh                  u:object_r:cpu_gpu_utility_exec:s0
+
+# start service
+/vendor/bin/sysbootcompleted_service.sh u:object_r:sysbootcompleted_service_exec:s0
+/vendor/bin/vendorbootcompleted_service.sh u:object_r:vendorbootcompleted_service_exec:s0

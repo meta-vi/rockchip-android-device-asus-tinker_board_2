@@ -18,9 +18,6 @@
 PRODUCT_SHIPPING_API_LEVEL := 30
 PRODUCT_DTBO_TEMPLATE := $(LOCAL_PATH)/Tinker_Board_2/dt-overlay.in
 PRODUCT_BOOT_DEVICE := fe330000.sdhci,fe320000.dwmmc
-# Put this before other configuration since PRODUCT specific flags might be set
-# in the following files.
-$(call inherit-product, device/asus/common/device.mk)
 include device/rockchip/common/build/rockchip/DynamicPartitions.mk
 include $(LOCAL_PATH)/Tinker_Board_2/BoardConfig.mk
 include device/rockchip/common/BoardConfig.mk
@@ -32,9 +29,9 @@ $(call inherit-product, device/rockchip/common/device.mk)
 PRODUCT_CHARACTERISTICS := tablet
 
 PRODUCT_NAME := WW_Tinker_Board_2
-PRODUCT_DEVICE := Tinker_Board_2
+PRODUCT_DEVICE := VisAI-Edge
 PRODUCT_BRAND := asus
-PRODUCT_MODEL := Tinker Board 2
+PRODUCT_MODEL := VisAI-Edge
 PRODUCT_MANUFACTURER := asus
 PRODUCT_AAPT_PREF_CONFIG := hdpi
 

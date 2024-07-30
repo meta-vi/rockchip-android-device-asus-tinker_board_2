@@ -60,6 +60,20 @@ service cpu_gpu_utility /vendor/bin/cpu_gpu_utility.sh
     disabled
     oneshot
 
+service sysbootcompleted_service /vendor/bin/sysbootcompleted_service.sh
+    class main
+    user root
+    group root
+    disabled
+    oneshot
+
+service vendorbootcompleted_service /vendor/bin/vendorbootcompleted_service.sh
+    class main
+    user root
+    group root
+    disabled
+    oneshot
+
 on property:sys.asus_debugger_running=1
        start asus-dbug-d
 
@@ -85,9 +99,11 @@ on property:vendor.asus_debugger_running=2
 
 on property:vendor.boot_completed=1
     start cpu_gpu_utility
+    start vendorbootcompleted_service
 
 on property:sys.boot_completed=1
     trigger sys-boot-completed-set
+    start sysbootcompleted_service
 
 # We want one opportunity per boot to enable zram, so we
 # use a trigger we fire from the above stanza. If
